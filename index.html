@@ -9,69 +9,81 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #264E9D;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fa;
             color: #333;
             display: flex;
             height: 100vh;
             overflow: hidden;
+            transition: background-color 0.3s ease;
         }
 
         /* Sidebar Styles */
         nav {
-            width: 200px;
-            background-color: #264E9D; /* Power BI blue color */
-            padding-top: 20px;
+            width: 250px;
+            background: linear-gradient(to bottom, #264e9d, #003366);
+            padding-top: 30px;
             position: fixed;
-            height: 100%;
-            top: 0;
+            height: calc(100% - 80px); /* Make sure the sidebar does not overlap the header */
+            top: 100px; /* Start the sidebar under the header */
             left: 0;
             color: white;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centers the links vertically */
             align-items: center;
+            box-shadow: 2px 0px 15px rgba(0, 0, 0, 0.1);
+            padding-bottom: 20px; /* Add space at the bottom of the sidebar */
         }
 
         nav a {
             text-decoration: none;
             color: white;
-            padding: 15px;
-            font-size: 1rem;
+            padding: 15px 20px;
+            font-size: 1.1rem;
             width: 100%;
             text-align: center;
-            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         nav a:hover {
-            background-color: #005a9c; /* Darker blue when hovering */
+            background-color: #005a9c;
+            transform: scale(1.05);
         }
 
         nav a.selected {
-            background-color: #004080; /* Dark blue for selected tab */
-            font-weight: bold; /* Optional: Add bold text for better emphasis */
+            background-color: #2CAAE2;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Main Content Styles */
         main {
-            margin-left: 200px; /* Offset the content to the right of the sidebar */
+            margin-left: 250px;
+            margin-top: 80px; /* Offset the content to below the header */
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: white;
+            background-color: #ffffff;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         iframe {
             width: 100%;
-            height: 80vh; /* Adjust height to fit screen */
+            height: 80vh;
             border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* Header Styles */
         header {
             width: 100%;
-            background-color: #264E9D; /* Power BI blue color */
+            background-color: #264E9D;
             color: white;
             padding: 20px 0;
             text-align: center;
@@ -85,12 +97,13 @@
 
         header h1 {
             margin: 0;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
         }
 
         header p {
-            margin: 3px 0 0;
-            font-size: 1rem;
+            margin: 5px 0 0;
+            font-size: 1.2rem;
             opacity: 0.9;
         }
 
@@ -110,8 +123,8 @@
 
     <!-- Header Section -->
     <header>
-        <h1>VRP Red Bull Power BI Report</h1>
-        <p>Interactive dashboards to empower your decisions</p>
+        <h1>VRP Red Bull Australia Reports</h1>
+        <p>Interactive Power BI dashboards to empower your decisions</p>
     </header>
 
     <!-- Main Content (Embedded Power BI Report) -->
@@ -124,13 +137,13 @@
         function loadReport(url, element) {
             // Change the iframe URL
             document.getElementById('powerbi-iframe').src = url;
-            
+
             // Remove the 'selected' class from all tabs
             var tabs = document.querySelectorAll('nav a');
             tabs.forEach(function(tab) {
                 tab.classList.remove('selected');
             });
-            
+
             // Add 'selected' class to the clicked tab
             element.classList.add('selected');
         }
