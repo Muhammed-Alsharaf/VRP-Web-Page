@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRP REDBULL Power BI Report</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #264E9D;
+            color: #333;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar Styles */
+        nav {
+            width: 200px;
+            background-color: #264E9D; /* Power BI blue color */
+            padding-top: 20px;
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centers the links vertically */
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 15px;
+            font-size: 1rem;
+            width: 100%;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #005a9c; /* Darker blue when hovering */
+        }
+
+        nav a.selected {
+            background-color: #004080; /* Dark blue for selected tab */
+            font-weight: bold; /* Optional: Add bold text for better emphasis */
+        }
+
+        /* Main Content Styles */
+        main {
+            margin-left: 200px; /* Offset the content to the right of the sidebar */
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+        }
+
+        iframe {
+            width: 100%;
+            height: 80vh; /* Adjust height to fit screen */
+            border: none;
+        }
+
+        /* Header Styles */
+        header {
+            width: 100%;
+            background-color: #264E9D; /* Power BI blue color */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        header p {
+            margin: 3px 0 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Sidebar Section -->
+    <nav>
+        <!-- Home Tab (Main Frame) -->
+        <a href="#" id="home" onclick="loadReport('https://strikeforce.com.au/', this)">Home</a>
+
+        <!-- Other Tabs -->
+        <a href="#" id="tab1" onclick="loadReport('https://app.powerbi.com/reportEmbed?reportId=eb54e391-dead-4425-896e-6df7d80a04db&autoAuth=true&ctid=f69507e0-42af-4b61-81c8-8a841053ca04&filterPaneEnabled=false', this)">Woolworths</a>
+        <a href="#" id="tab2" onclick="loadReport('https://app.powerbi.com/reportEmbed?reportId=e28d5120-8bc3-4f19-be70-e834882004a5&autoAuth=true&ctid=f69507e0-42af-4b61-81c8-8a841053ca04&filterPaneEnabled=false', this)">Coles</a>
+        <a href="#" id="tab3" onclick="loadReport('https://app.powerbi.com/reportEmbed?reportId=699879f4-e95a-447c-a163-6dbb47e3678b&autoAuth=true&ctid=f69507e0-42af-4b61-81c8-8a841053ca04&filterPaneEnabled=false', this)">Metcash</a>
+    </nav>
+
+    <!-- Header Section -->
+    <header>
+        <h1>VRP Red Bull Power BI Report</h1>
+        <p>Interactive dashboards to empower your decisions</p>
+    </header>
+
+    <!-- Main Content (Embedded Power BI Report) -->
+    <main>
+        <iframe id="powerbi-iframe" src="https://strikeforce.com.au/" allowfullscreen="true"></iframe>
+    </main>
+
+    <script>
+        // Function to change the embedded Power BI URL when a tab is clicked
+        function loadReport(url, element) {
+            // Change the iframe URL
+            document.getElementById('powerbi-iframe').src = url;
+            
+            // Remove the 'selected' class from all tabs
+            var tabs = document.querySelectorAll('nav a');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('selected');
+            });
+            
+            // Add 'selected' class to the clicked tab
+            element.classList.add('selected');
+        }
+
+        // Set Home tab as selected by default
+        window.onload = function() {
+            document.getElementById('home').classList.add('selected');
+        }
+    </script>
+</body>
+</html>
