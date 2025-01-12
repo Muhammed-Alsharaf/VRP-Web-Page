@@ -58,6 +58,15 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
+        /* Logo in the Navigation Pane */
+        .nav-logo {
+            position: absolute;
+            bottom: 100px;
+            left: 20px;
+            height: 80px; /* Adjust the height as needed */
+            width: 200px;
+        }
+
         /* Main Content Styles */
         main {
             margin-left: 250px;
@@ -127,6 +136,9 @@
         <a href="#" id="tab1" onclick="loadReport('https://app.powerbi.com/reportEmbed?reportId=eb54e391-dead-4425-896e-6df7d80a04db&autoAuth=true&ctid=f69507e0-42af-4b61-81c8-8a841053ca04&filterPaneEnabled=false', this)">Woolworths</a>
         <a href="#" id="tab2" onclick="loadReport('https://app.powerbi.com/reportEmbed?reportId=e28d5120-8bc3-4f19-be70-e834882004a5&autoAuth=true&ctid=f69507e0-42af-4b61-81c8-8a841053ca04&filterPaneEnabled=false', this)">Coles</a>
         <a href="#" id="tab3" onclick="loadReport('https://app.powerbi.com/reportEmbed?reportId=699879f4-e95a-447c-a163-6dbb47e3678b&autoAuth=true&ctid=f69507e0-42af-4b61-81c8-8a841053ca04&filterPaneEnabled=false', this)">Metcash</a>
+
+        <!-- Bottom Left Logo -->
+        <img src="logo_primary_monoreversed.png" alt="Company Logo" class="nav-logo">
     </nav>
 
     <!-- Header Section -->
